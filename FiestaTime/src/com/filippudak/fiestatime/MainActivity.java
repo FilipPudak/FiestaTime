@@ -31,19 +31,12 @@ public class MainActivity extends SherlockFragmentActivity {
 		mTabsAdapter.addTab(bar.newTab().setText("Schedule"),
 				ScheduleFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Films"),
-				BaseFragment.class, null);
+				FilmsFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Places"),
-				BaseFragment.class, null);
+				PoIFragment.class, null);
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		menu.add("Refresh").setShowAsAction(
-				MenuItem.SHOW_AS_ACTION_IF_ROOM
-						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-		return super.onCreateOptionsMenu(menu);
-	}
+	
 
 }

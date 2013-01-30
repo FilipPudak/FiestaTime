@@ -3,22 +3,16 @@ package com.filippudak.fiestatime;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.R.anim;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-public class ScheduleFragment extends SherlockListFragment {
+public class PoIFragment extends SherlockListFragment{
 	
 
 	public final static String ITEM_TITLE = "title";
@@ -51,7 +45,7 @@ public class ScheduleFragment extends SherlockListFragment {
 	    super.onActivityCreated(savedInstanceState);
 	    
 	    setHasOptionsMenu(true);
-	    
+
 		// Create the ListView Adapter
 		adapter = new SectionedListAdapter(this.getActivity());
 		ArrayAdapter<String> listadapter = new ArrayAdapter<String>(this.getActivity(), R.layout.list_item_schedule, notes);
@@ -67,15 +61,18 @@ public class ScheduleFragment extends SherlockListFragment {
 
 	    
 	  }
-	
+
 
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
 		
+		menu.add("Map").setIcon(R.drawable.actionbar_map).setShowAsAction(
+				MenuItem.SHOW_AS_ACTION_IF_ROOM
+						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		menu.add("Refresh").setIcon(R.drawable.actionbar_refresh).setShowAsAction(
 				MenuItem.SHOW_AS_ACTION_IF_ROOM
 						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		super.onPrepareOptionsMenu(menu);
 	}
-	
+		
 }
