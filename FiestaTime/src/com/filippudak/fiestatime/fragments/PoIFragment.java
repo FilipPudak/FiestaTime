@@ -1,4 +1,4 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.fragments;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,10 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.filippudak.fiestatime.R;
+import com.filippudak.fiestatime.R.drawable;
+import com.filippudak.fiestatime.R.layout;
+import com.filippudak.fiestatime.adapters.SectionedListAdapter;
 
 public class PoIFragment extends SherlockListFragment{
 	

@@ -1,10 +1,12 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.adapters;
 
-import java.util.ArrayList;
+import com.filippudak.fiestatime.FilmDetailActivity;
+import com.filippudak.fiestatime.R;
+import com.filippudak.fiestatime.model.Film;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +16,15 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class FilmsAdapter extends BaseAdapter{
 	
-	private String[] filmsList;
+	private Film[] filmsList;
 	private Context context;
 	private Bitmap[] images;
+	private int elementPosition;
 	
-	public FilmsAdapter(Context context, String[] filmsList, Bitmap[] images)
+	public FilmsAdapter(Context context, Film[] filmsList, Bitmap[] images)
 	{
 		this.filmsList = filmsList;
 		this.context = context;
@@ -69,7 +71,7 @@ public class FilmsAdapter extends BaseAdapter{
 		
 		int numOfBigs = (int) Math.ceil(position / 3.0);
 		int numOfSmalls = position - numOfBigs;
-		final int elementPosition = numOfBigs + 2*numOfSmalls;
+		elementPosition = numOfBigs + 2*numOfSmalls;
 		
 		View row = convertView;
 				
@@ -115,33 +117,22 @@ public class FilmsAdapter extends BaseAdapter{
 		
 		if (type == 0)
 		{
-		    onePictureViewHolder.image.setImageBitmap(images[0]);		    
-		    onePictureViewHolder.text.setText(filmsList[elementPosition]);
+		    onePictureViewHolder.image.setImageBitmap(images[elementPosition]);		    
+		    onePictureViewHolder.text.setText(filmsList[elementPosition].getTitle());
+		    onePictureViewHolder.image.setOnClickListener(new FilmsOnClickListener(elementPosition));
 		    
 		}
 		else
 		{
-		    twoPicturesViewHolder.imageLeft.setImageBitmap(images[1]);
-		    twoPicturesViewHolder.textLeft.setText(filmsList[elementPosition]);
-		    twoPicturesViewHolder.flLeft.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Toast.makeText(context, "Item " + elementPosition, Toast.LENGTH_LONG).show();
-				}
-			});
+		    twoPicturesViewHolder.imageLeft.setImageBitmap(images[elementPosition]);
+		    twoPicturesViewHolder.textLeft.setText(filmsList[elementPosition].getTitle());
+		    twoPicturesViewHolder.flLeft.setOnClickListener(new FilmsOnClickListener(elementPosition));
 		    
 		    if (elementPosition+1 < filmsList.length)
 		    {
-			    twoPicturesViewHolder.imageRight.setImageBitmap(images[1]);
-			    twoPicturesViewHolder.textRight.setText(filmsList[elementPosition+1]);
-			    twoPicturesViewHolder.flRight.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						Toast.makeText(context, "Item " + (elementPosition + 1), Toast.LENGTH_LONG).show();
-					}
-				});
+			    twoPicturesViewHolder.imageRight.setImageBitmap(images[elementPosition+1]);
+			    twoPicturesViewHolder.textRight.setText(filmsList[elementPosition+1].getTitle());
+			    twoPicturesViewHolder.flRight.setOnClickListener(new FilmsOnClickListener(elementPosition+1));
 		    }
 		    else
 		    {
@@ -149,13 +140,7 @@ public class FilmsAdapter extends BaseAdapter{
 		    	 twoPicturesViewHolder.flRight.setBackgroundColor(Color.TRANSPARENT);
 		    	 twoPicturesViewHolder.imageRight.setImageDrawable(null);
 				 twoPicturesViewHolder.textRight.setText("");
-		    	 twoPicturesViewHolder.flRight.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						
-					}
-				});
+		    	 twoPicturesViewHolder.flRight.setOnClickListener(null);
 		    }
 		    
 		}
@@ -163,7 +148,10 @@ public class FilmsAdapter extends BaseAdapter{
 		return row;
 	}
 	
-		
+	
+	/**
+	 * View Holders -> They save the ids of elements so a findviewbyid call is not necessary every time we deal with an element.
+	 */		
 	static class OnePictureViewHolder {
 		ImageView image;
 	    TextView text;
@@ -177,5 +165,25 @@ public class FilmsAdapter extends BaseAdapter{
 	    ImageView imageRight;
 	    TextView textRight;
 	}
+	
+	/**
+	 * OnClickListener -> Handles clicks on films in the list
+	 */
+	class FilmsOnClickListener implements OnClickListener {
+		
+		private int pos;
+		
+		FilmsOnClickListener(int pos){
+			
+			this.pos = pos;
+		}
+		
+	      public void onClick(View v) {
+	    	  Intent myIntent = new Intent(context, FilmDetailActivity.class);
+	    	  myIntent.putExtra("Film", filmsList[pos]);
+	    	  myIntent.putExtra("Image", String.valueOf(pos));
+		      context.startActivity(myIntent);
+	      }
+	    }
 
 }

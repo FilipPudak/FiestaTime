@@ -1,4 +1,4 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.adapters;
 
 import android.content.Context;
 import android.database.DataSetObserver;

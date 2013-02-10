@@ -1,4 +1,4 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.filippudak.fiestatime.R;
+import com.filippudak.fiestatime.R.id;
+import com.filippudak.fiestatime.R.layout;
 
 public class BaseFragment extends SherlockFragment {
     int mNum;

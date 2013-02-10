@@ -1,7 +1,11 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.adapters;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import com.filippudak.fiestatime.R;
+import com.filippudak.fiestatime.R.layout;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;

@@ -9,6 +9,10 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.filippudak.fiestatime.adapters.TabsAdapter;
+import com.filippudak.fiestatime.fragments.FilmsFragment;
+import com.filippudak.fiestatime.fragments.PoIFragment;
+import com.filippudak.fiestatime.fragments.ScheduleFragment;
 
 public class MainActivity extends SherlockFragmentActivity {
 

@@ -6,5 +6,10 @@
     <string name="menu_settings">Settings</string>
 
      <string name="empty_schedule">No schedule data</string>
+     
+     <string name="films_detail_image_descr">Film image</string>
+     <string name="films_detail_add_to_favorites">Add to favorites</string>
+     <string name="films_detail_venue">When</string>
+     <string name="films_detail_description">Description</string>
     
 </resources>

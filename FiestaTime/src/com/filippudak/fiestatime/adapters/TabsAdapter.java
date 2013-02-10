@@ -1,4 +1,4 @@
-package com.filippudak.fiestatime;
+package com.filippudak.fiestatime.adapters;
 
 import java.util.ArrayList;
 
