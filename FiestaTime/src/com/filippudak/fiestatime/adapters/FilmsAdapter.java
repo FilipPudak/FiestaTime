@@ -32,7 +32,6 @@ public class FilmsAdapter extends BaseAdapter{
 	}
 
 	@Override
-	
 	public int getCount() {
 		
 		int numOfBigs = (int) Math.ceil(filmsList.length / 5.0);

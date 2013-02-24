@@ -1,26 +1,18 @@
 package com.filippudak.fiestatime.fragments;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.R.anim;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.filippudak.fiestatime.R;
-import com.filippudak.fiestatime.R.drawable;
-import com.filippudak.fiestatime.R.layout;
+import com.filippudak.fiestatime.FiestaTimeApplication;
+import com.filippudak.fiestatime.adapters.ScheduleHelperAdapter;
 import com.filippudak.fiestatime.adapters.SectionedListAdapter;
+import com.filippudak.fiestatime.model.Venue;
 
 public class ScheduleFragment extends SherlockListFragment {
 	
@@ -28,18 +20,9 @@ public class ScheduleFragment extends SherlockListFragment {
 	public final static String ITEM_TITLE = "title";
 	public final static String ITEM_CAPTION = "caption";
 
-	// SectionHeaders
-	private final static String[] days = new String[]{"Mon", "Tue", "Wed", "Thur", "Fri"};
-
-	// Section Contents
-	private final static String[] notes = new String[]{"Ate Breakfast", "Ran a Marathan ...yah really", "Slept all day"};
-
-
 	// Adapter for ListView Contents
 	private SectionedListAdapter adapter;
 
-	// ListView Contents
-	private ListView journalListView;
 
 	public Map<String, ?> createItem(String title, String caption)
 		{
@@ -58,17 +41,19 @@ public class ScheduleFragment extends SherlockListFragment {
 	    
 		// Create the ListView Adapter
 		adapter = new SectionedListAdapter(this.getActivity());
-		ArrayAdapter<String> listadapter = new ArrayAdapter<String>(this.getActivity(), R.layout.list_item_schedule, notes);
+		
 
 		// Add Sections
-		for (int i = 0; i < days.length; i++)
+		for (int i = 0; i < FiestaTimeApplication.sectionsVenue.size(); i++)
 			{
-				adapter.addSection(days[i], listadapter);
+				ArrayList<String> headers = FiestaTimeApplication.headersVenue;
+				ArrayList<Venue> venues = FiestaTimeApplication.sectionsVenue.get(headers.get(i));
+				ScheduleHelperAdapter scheduleHelperAdapter = new ScheduleHelperAdapter(this.getActivity(), venues);
+				adapter.addSection(headers.get(i), scheduleHelperAdapter);
 			}
 
 		// Set the adapter on the ListView holder
 		setListAdapter(adapter);
-
 	    
 	  }
 	
@@ -76,9 +61,10 @@ public class ScheduleFragment extends SherlockListFragment {
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
 		
-		menu.add("Refresh").setIcon(R.drawable.actionbar_refresh).setShowAsAction(
-				MenuItem.SHOW_AS_ACTION_IF_ROOM
-						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		menu.clear();
+		
+		menu.add("About").setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		
 		super.onPrepareOptionsMenu(menu);
 	}
 	

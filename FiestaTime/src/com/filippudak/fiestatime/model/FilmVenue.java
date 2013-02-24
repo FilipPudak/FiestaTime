@@ -1,18 +1,14 @@
 package com.filippudak.fiestatime.model;
 
-public class Venue {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class FilmVenue implements Serializable {
 	
-	private Film film;
 	private String date;
 	private String time;
 	private String place;
 	
-	public Film getFilm() {
-		return film;
-	}
-	public void setFilm(Film film) {
-		this.film = film;
-	}
 	public String getDate() {
 		return date;
 	}
@@ -31,5 +27,5 @@ public class Venue {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	
+
 }

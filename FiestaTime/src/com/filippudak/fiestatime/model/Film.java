@@ -13,7 +13,7 @@ public class Film implements Serializable{
 	private String category;
 	private String trailerLink;
 	private String imageLink;
-	private String[] venues;
+	private FilmVenue[] venues;
 	private double rating;
 	
 	public Film(){};
@@ -87,10 +87,10 @@ public class Film implements Serializable{
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public String[] getVenues() {
+	public FilmVenue[] getVenues() {
 		return venues;
 	}
-	public void setVenues(String[] venues) {
+	public void setVenues(FilmVenue[] venues) {
 		this.venues = venues;
 	}
 

@@ -9,35 +9,22 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/filmdetails_title"
+            android:id="@+id/poidetails_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:paddingTop="20dp"
             android:textColor="#333333"
             android:textSize="24sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/filmdetails_runtime"
+        
+         <TextView
+                android:id="@+id/poidetails_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp" />
 
-            <TextView
-                android:id="@+id/filmdetails_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="#e3353d" />
-        </LinearLayout>
-
         <ImageView
-            android:id="@+id/filmdetails_image"
+            android:id="@+id/poidetails_image"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -45,11 +32,10 @@
             android:padding="20dp" />
 
         <LinearLayout
-            android:id="@+id/filmdetails_view_trailer"
+            android:id="@+id/poidetails_map"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/grey_selectable_background"
-            android:clickable="true"
             android:orientation="horizontal"
             android:weightSum="4" >
 
@@ -57,9 +43,9 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/films_detail_view_trailer"
+                android:contentDescription="@string/pois_detail_show_on_map"
                 android:padding="8dp"
-                android:src="@drawable/actionbar_video" />
+                android:src="@drawable/actionbar_map" />
 
             <View
                 android:layout_width="1dp"
@@ -72,30 +58,13 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:text="@string/films_detail_view_trailer"
+                android:text="@string/pois_detail_show_on_map"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
         </LinearLayout>
-
+        
         <LinearLayout
-            android:id="@+id/filmdetails_venue"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="2dip"
-                android:paddingLeft="20dp"
-                android:paddingTop="2dip"
-                android:text="@string/films_detail_venue"
-                android:textColor="#e3353d" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/filmdetails_description"
+            android:id="@+id/poidetails_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
